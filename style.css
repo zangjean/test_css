@@ -19,7 +19,7 @@
 }
 
 
-body{
+body{3rem
     font-family: 'DMSerif', Verdana;
     background: url(../assets/img/bg.png) center/cover no-repeat;
     /* Le background cover permet de garder le ratio de l'image *
