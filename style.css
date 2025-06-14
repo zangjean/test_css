@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+@font-face {
+    font-family: 'DMSerif';
+    src: url(../assets/fonts/DMSerifDisplay-Regular.ttf);
+}
+@font-face {
+    font-family: 'Oswald';
+    src: url(../assets/fonts/Oswald-Regular.ttf);
+}
+
+/* Reset CSS */
+/* Le reset CSS permet de supprimer les styles par défaut des navigateurs */
+*{
+    margin: 0;
+    padding: 0;
+    /* Pour que les bordures et marges soient incluses dans la taille de l'élément */
+    /* border: 2px solid red; */
+}
+
+
+body{
+    font-family: 'DMSerif', Verdana;
+    background: url(../assets/img/bg.png) center/cover no-repeat;
+    /* Le background cover permet de garder le ratio de l'image *
+    /*VH = Viewport Height, 1vh = 1% de la hauteur de la fenêtre */
+    /*VW = Viewport Width, 1vw = 1% de la largeur de la fenêtre */
+    min-height: 100vh;
+}
+
+h1{
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+    /* Les tailles de polices doivent être en rem  1rem -> 16 px*/
+    font-size: 8vw ;
+    text-shadow: 8px 8px 12px #00000036;
+    color: rgba(141, 5, 153, 0.678);
+    /*font-family: 'Oswald', sans-serif;*/
+}
+
+main{
+    min-height: 500px;
+    /* Pour que le main prenne toute la hauteur de la fenêtre */
+    width: 90%;
+    background-color: rgba(127, 255, 212, 0.5);
+    /* Centrer une boite */
+    margin: 0 auto;
+    border: 5px solid rgba(163, 105, 238, 0.5);
+    border-radius: 50px 50px 50px 50px;
+    box-shadow: 0px 0px 20px 10px rgb(0, 47, 255);
+    padding: 20px;
+}
+
+.boite{
+    border: 2px solid rgb(212, 0, 255);
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 20px;
+
+}
+
+/* FLEXBOX */
+/* Sert à repartir equitablement les elements sur la page */
+
+.flexbox ul{
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.flexbox li{
+    list-style-type: none;
+    height: 160px;
+    width: 160px;
+    margin: 20px;
+    background-color: bisque;
+    border: 2px solid rgba(255, 0, 234, 0.384);
+    border-radius: 10px;
+    /* Pour que le texte soit centré dans la boite  */
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+}
+
+/*GRID*/
+.grid-container{
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+.grid img{
+    margin-top: 20px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+        "i1 i2"
+        "ta ta"
+        "vi bt";
+    /* Pour que les éléments soient espacés */
+    
+    gap: 10px;
+}
+
+input, textarea{
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid darkblue;
+    font-size: 1.1rem;
+    font-family: "DMSERIF", Verdana, sans-serif;
+}
+
+textarea{
+    grid-area: ta;
+    height: 40px;
+    resize: none;
+    /* Pour que la zone de texte ne puisse pas être redimensionnée */
+}
+
+#btn_submit{
+    grid-area: bt;
+    cursor: pointer;
+    background-color: cyan;
+    transition: 700ms;
+
+}
+
+#btn_submit:hover{
+    background-color: darkcyan;
+    color: white;
+}
+
+/*ABSOLUTE*/
+
+.absolute{
+    position: relative;
+    /* Pour que les éléments à l'intérieur de cette boite soient positionnés par rapport à cette boite */
+    /*sinon les éléments seront positionnés par rapport à la fenêtre (body)*/
+}
+
+#circle1{
+    width: 80px;
+    height: 80px;
+    border-radius: 150px;
+    position: absolute;
+    background: rgb(192, 7, 47);
+    top: 0;
+    right: 0;
+}
+
+#circle2{
+    width: 40px;
+    height: 40px;
+    border-radius: 150px;
+    position: absolute;
+    background: rgb(3, 163, 3);
+    top: 50%;
+    /* Pour que le cercle soit centré verticalement par rapport à la boite */
+    left: 50%;
+    /* Pour centrer le cercle par rapport à la boite à partir du centre du cercle sinon ce sera en fonction du bord gauche*/
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/*RESPONSIVE*/
+@media screen and (max-width: 850px){
+    .grid-container{
+        display: block;
+        /* Pour que la grille soit en colonne */
+    }
+    .grid-container img{
+        width: 40%;
+        margin: 0 auto;
+        display: block;
+        /* Pour que l'image prenne toute la largeur de la boite */
+    }
+}
+
+@media screen and (max-width: 640px){
+    .flexbox ul{
+        flex-direction: column;
+        /* Pour que les éléments soient en colonne */
+        align-items: center;
+    }
+    form{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-areas: 
+            "i1"
+            "i2"
+            "ta"
+            "vi"
+            "bt";
+    }
+}
+
+@media screen and (max-width: 340px){
+    input, textarea{
+        font-size: 0.8rem;
+        /* Pour que la taille de la police soit plus petite sur les petits écrans */
+    }
+    
+}
+
+@media screen and (max-width: 290px){
+    input, textarea{
+        font-size: 0.5rem;
+        /* Pour que la taille de la police soit plus petite sur les petits écrans */
+    }
+}
